@@ -1,0 +1,38 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: Build 
+  jobs:
+  - job: Build
+    timeoutInMinutes: 4
+    pool:
+     vmImage: 'ubuntu-latest'
+    steps:
+    - bash: echo "Testing Complete"   #Pest build for success 
+
+- stage: Test
+  jobs:
+  - job: Test
+    timeoutInMinutes: 5
+    pool:
+     vmImage: 'ubuntu-latest'
+    steps:
+    - bash: echo "Testing complete"
+
+- stage: PublishBuild
+  jobs:
+  - job: PublishBuild
+    timeoutInMinutes: 4
+    pool:
+     vmImage: 'ubuntu-latest'
+    steps:
+    - bash: echo "Testing complete"     #Publish my build
